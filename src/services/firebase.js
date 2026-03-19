@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_AUTH_DOMAIN",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_BUCKET",
-  messagingSenderId: "TU_SENDER_ID",
-  appId: "TU_APP_ID",
+  apiKey: "AIzaSyDtxIO--zSxbV2ODigqE8DccPDoCxwyJpE",
+  authDomain: "encuentratuaula-454d9.firebaseapp.com",
+  projectId: "encuentratuaula-454d9",
+  storageBucket: "encuentratuaula-454d9.firebasestorage.app",
+  messagingSenderId: "709373717033",
+  appId: "1:709373717033:web:cf09fc32f95050aac5ca38",
 };
 
 const app = initializeApp(firebaseConfig);
