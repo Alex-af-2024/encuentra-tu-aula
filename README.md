@@ -15,3 +15,12 @@
 - Se crea ddbb NoSQL en Firebase usando Firestore. Modo prueba para flexibilidad y test ...ok
 
 - Configurar Hosting ...ok
+
+Lo que tengo de momento:
+✔ Input funcionando
+✔ Normalización
+✔ Conexión a Cloud Firestore
+✔ Datos reales
+✔ Render básico
+
+19-03-2026

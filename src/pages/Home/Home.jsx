@@ -1,22 +1,62 @@
 import { useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { getAulaByCodigo } from "../../services/aulaService";
 import "./Home.css";
 
 const Home = () => {
-  const [codigo, setCodigo] = useState("");
+  const [aula, setAula] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSearch = (normalizedCode) => {
-    console.log("Código normalizado:", normalizedCode);
-    setCodigo(normalizedCode);
+  const handleSearch = async (codigoNormalizado) => {
+    setLoading(true);
+    setError("");
+    setAula(null);
+
+    try {
+      const result = await getAulaByCodigo(codigoNormalizado);
+
+      if (!result) {
+        setError("No se encontró el aula");
+      } else {
+        setAula(result);
+      }
+    } catch (err) {
+      setError("Error al consultar el aula");
+    }
+
+    setLoading(false);
   };
 
   return (
     <div className="home-container">
-      <h1>Encuentra Tu Aula</h1>
+      <h1 className="title">EncuentraTuAula</h1>
 
       <SearchBar onSearch={handleSearch} />
 
-      {codigo && <p className="result-text">Buscando aula: {codigo}</p>}
+      {loading && <p className="loading-text">Buscando aula...</p>}
+
+      {error && <p className="error-text">{error}</p>}
+
+      {aula && (
+        <div className="result-box">
+          <h2 className="aula-title">{aula.codigo}</h2>
+
+          <p>
+            <strong>Sede:</strong> {aula.sede}
+          </p>
+          <p>
+            <strong>Edificio:</strong> {aula.edificio}
+          </p>
+          <p>
+            <strong>Piso:</strong> {aula.piso}
+          </p>
+
+          <p className="guide-text">
+            <strong>Guía:</strong> {aula.guia}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
