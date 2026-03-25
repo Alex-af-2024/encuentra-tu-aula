@@ -1,9 +1,9 @@
-// Hace que al escribir en App React el código, busque en Firebase lo necesario
+// Hace las querys directamente a la colección aulas
 
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
 
-export const getAulaByCodigo = async (codigoNormalizado) => {
+export const getAulaByCode = async (codigoNormalizado) => {
   try {
     const aulasRef = collection(db, "aulas");
 

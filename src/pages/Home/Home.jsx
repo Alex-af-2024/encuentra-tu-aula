@@ -1,10 +1,10 @@
 import { useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { getAulaByCodigo } from "../../services/aulaService";
+import { getAulaByCode } from "../../services/aulaService";
 import "./Home.css";
 
 const Home = () => {
-  const [aula, setAula] = useState(null);
+  const [aula, setAula] = useState(null); //constantes seteables 7,8,9
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +14,7 @@ const Home = () => {
     setAula(null);
 
     try {
-      const result = await getAulaByCodigo(codigoNormalizado);
+      const result = await getAulaByCode(codigoNormalizado);
 
       if (!result) {
         setError("No se encontró el aula");

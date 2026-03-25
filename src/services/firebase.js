@@ -1,3 +1,6 @@
+// Conecta con Firestore NoSQL
+//Pendiente modificar apiKey por seguridad
+
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 

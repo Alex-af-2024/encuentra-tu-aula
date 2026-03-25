@@ -1,3 +1,5 @@
+// Formulario dentro de Home.jsx
+
 import { useState } from "react";
 import "./SearchBar.css";
 import { normalizeCode } from "../../utils/normalizeCode";
