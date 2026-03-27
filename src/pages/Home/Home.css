@@ -35,7 +35,35 @@
   margin-bottom: 10px;
 }
 
+.result-image {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+
 .guide-text {
   margin-top: 15px;
   line-height: 1.5;
+}
+
+/* Media queries para móviles */
+@media (max-width: 768px) {
+  .home-container {
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .result-box {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .result-image {
+    margin-top: 10px;
+  }
 }

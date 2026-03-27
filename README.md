@@ -23,4 +23,3 @@ Lo que tengo de momento:
 ✔ Datos reales
 ✔ Render básico
 
-19-03-2026

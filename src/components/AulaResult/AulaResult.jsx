@@ -1,18 +1,19 @@
 import "./AulaResult.css";
+import sanJoaquinImg from '../../assets/images/san-joaquin.jpg';
+import raquelImg from '../../assets/images/raquel.jpg';
 
 const AulaResult = ({ aula }) => {
     if (!aula) return null;
 
-    const getImageBySede = (sede) => {
-        if (sede === "San Joaquín"){
-            return "/assets/san-joaquin.jpg";
+    const getImageByCode = (codigo) => {
+        const parts = codigo.split('-');
+        const lastPart = parts[parts.length - 1];
+        if (['A', 'B', 'C'].includes(lastPart)) {
+            return sanJoaquinImg;
+        } else if (lastPart === 'R') {
+            return raquelImg;
         }
-
-        if (sede === "Raquel"){
-            return "/assets/raquel.jpg";
-        }
-
-        return "";
+        return null;
     };
 
      return (
@@ -23,11 +24,13 @@ const AulaResult = ({ aula }) => {
       <p><strong>Edificio:</strong> {aula.edificio}</p>
       <p><strong>Piso:</strong> {aula.piso}</p>
 
-      <img
-        src={getImageBySede(aula.sede)}
-        alt={aula.sede}
-        className="result-image"
-      />
+      {getImageByCode(aula.codigo) && (
+        <img
+          src={getImageByCode(aula.codigo)}
+          alt="Imagen del aula"
+          className="result-image"
+        />
+      )}
 
       <p className="guide-text">
         <strong>Guía:</strong> {aula.guia}
