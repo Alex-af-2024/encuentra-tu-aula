@@ -1,25 +1,132 @@
-17-03-2026 Sprint 2
+# 📍 EncuentraTuAula
 
-- Aplicar RegExp (expresión regular) para eliminar espacios y guiones en todo el imput. Es como un super buscador de texto.Su sintaxis es /[\s-]/g
+Aplicación web desarrollada para facilitar la ubicación de salas dentro de la Universidad Santo Tomás, permitiendo a los estudiantes encontrar rápidamente su aula mediante un código estandarizado.
 
-18-03-2026
+---
 
-- Configuración de Firebase con app React ...ok
-  - services/firebase.js->
-    - firebaseConfig: Objeto que le dice a Google exactamente cual de todos los proyectos debe conectarse(usando apiKey y projectId)
-    - initializeApp: Comando que enciende la conexión usando llaves
-    - getFirestore: Se activa Firestore(ddbb noSQL). Al exportar db, se puede importar ddbb a cualquier componente de Ract para guardar o leer datos.
+## 🚀 Descripción del Proyecto
 
-- Configurar SDK en proyecto usando datos de Firebase </> que contiene la conexión de servicios Google. ...ok
-- En Firebase se crea proyecto y configura SDK en proyecto. ...ok
-- Se crea ddbb NoSQL en Firebase usando Firestore. Modo prueba para flexibilidad y test ...ok
+EncuentraTuAula es una aplicación web responsive que permite a los alumnos ingresar el código de su sala (ej: `S-03-P02-A`) y obtener:
 
-- Configurar Hosting ...ok
+- 📌 Sede correspondiente
+- 🏢 Edificio
+- 🧭 Piso
+- 🗺️ Imagen de referencia
+- 📝 Guía textual de cómo llegar
 
-Lo que tengo de momento:
-✔ Input funcionando
-✔ Normalización
-✔ Conexión a Cloud Firestore
-✔ Datos reales
-✔ Render básico
+El sistema está diseñado bajo un enfoque **mobile-first**, priorizando la rapidez, claridad y facilidad de uso.
 
+---
+
+## 🧠 Objetivo
+
+Optimizar la experiencia de los estudiantes dentro del campus, reduciendo el tiempo de búsqueda de aulas mediante una solución simple, accesible y visual.
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+### Frontend
+
+- React (con Vite)
+- JavaScript (ES6+)
+- CSS modular por componente
+
+### Backend / Base de Datos
+
+- Node.js
+- Firebase
+- Cloud Firestore (NoSQL)
+
+### Hosting (configurado)
+
+- Firebase Hosting
+
+---
+
+## 🏗️ Arquitectura
+
+El proyecto sigue una arquitectura desacoplada:
+Frontend (React)
+↓
+Services (lógica de negocio)
+↓
+Cloud Firestore (base de datos)
+
+---
+
+## 📦 Estructura Principal del Proyecto
+
+src/
+│
+├── components/
+│ ├── SearchBar/
+│ └── AulaResult/
+│
+├── pages/
+│ └── Home/
+│
+├── services/
+│ ├── firebase.js
+│ └── aulaService.js
+│
+├── utils/
+│ └── normalizeCode.js
+│
+└── assets/
+
+---
+
+## 🔍 Funcionalidades
+
+- ✅ Búsqueda de aulas por código
+- ✅ Normalización automática del input
+- ✅ Consulta en tiempo real a Firestore
+- ✅ Visualización de información estructurada
+- ✅ Carga de imágenes según sede
+- ✅ Validación de formato de código
+- ✅ Feedback visual (loading, errores)
+
+---
+
+## 🧪 Ejemplo de uso
+
+Entrada:
+
+S-03-P02-A
+
+Resultado:
+
+- Sede: San Joaquín
+- Edificio: A
+- Piso: 2
+- Imagen del lugar
+- Guía paso a paso
+
+---
+
+## ⚙️ Instalación y ejecución
+
+```bash
+# Clonar repositorio
+git clone <repo>
+
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo
+npm run dev
+```
+
+---
+
+👨‍💻 Autor
+
+Alejandro Franco Acosta
+Analista Programador en práctica
+
+---
+
+📄 Licencia
+
+Proyecto académico – uso educativo

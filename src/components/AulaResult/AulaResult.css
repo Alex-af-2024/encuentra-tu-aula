@@ -1,12 +1,14 @@
 .result-container {
   margin-top: 30px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 2px solid #007d6d;
   border-radius: 10px;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 63, 55, 0.1);
 }
 
 .result-image {
@@ -18,4 +20,28 @@
 .guide-text {
   margin-top: 15px;
   line-height: 1.5;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .result-container {
+    margin: 20px auto;
+    padding: 15px;
+    max-width: 90%;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+  .result-container {
+    margin: 15px auto;
+    padding: 12px;
+    max-width: 95%;
+    border-radius: 8px;
+  }
+  
+  .guide-text {
+    font-size: 14px;
+    margin-top: 10px;
+  }
 }

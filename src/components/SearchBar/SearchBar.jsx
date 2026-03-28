@@ -20,6 +20,7 @@ const SearchBar = ({ onSearch }) => {
   return (
     <form className="search-form" onSubmit={handleSubmit}>
       <input
+        id="search-input"
         type="text"
         placeholder="Ej: S-02-P03-B"
         value={input}

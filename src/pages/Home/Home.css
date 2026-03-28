@@ -7,7 +7,13 @@
 .title {
   font-size: 28px;
   margin-bottom: 20px;
+  color: #003f37;
+  font-weight: 600;
 }
+
+p{
+    color: black;
+  }
 
 .loading-text {
   margin-top: 20px;
@@ -16,23 +22,28 @@
 
 .error-text {
   margin-top: 20px;
-  color: red;
+  color: #d32f2f;
   font-weight: bold;
 }
 
 .result-box {
   margin-top: 30px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 2px solid #007d6d;
   border-radius: 8px;
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 63, 55, 0.1);
 }
 
 .aula-title {
   margin-bottom: 10px;
+  color: #3ba236;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .result-image {
@@ -46,11 +57,11 @@
   line-height: 1.5;
 }
 
-/* Media queries para móviles */
+/* Tablets */
 @media (max-width: 768px) {
   .home-container {
     margin-top: 20px;
-    padding: 10px;
+    padding: 15px;
   }
 
   .title {
@@ -65,5 +76,46 @@
 
   .result-image {
     margin-top: 10px;
+  }
+
+  p{
+    color: black;
+    font-size: 16px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .home-container {
+    margin-top: 10px;
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .result-box {
+    padding: 12px;
+    max-width: 100%;
+    border-radius: 6px;
+  }
+
+  .aula-title {
+    font-size: 16px;
+  }
+
+  .result-image {
+    margin-top: 10px;
+    border-radius: 6px;
+  }
+
+  .guide-text {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 14px;
   }
 }
