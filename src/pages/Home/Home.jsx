@@ -1,19 +1,40 @@
-import { useState } from "react";
+import { useState, forwardRef, useImperativeHandle, useRef } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { getAulaByCode } from "../../services/aulaService";
+import { addSearchToHistory } from "../../utils/storageUtils";
 import "./Home.css";
-import sanJoaquinImg from '../../assets/images/san-joaquin.jpg';
-import raquelImg from '../../assets/images/raquel.jpg';
+import sanJoaquinImg from "../../assets/images/san-joaquin.jpg";
+import raquelImg from "../../assets/images/raquel.jpg";
 
-const Home = () => {
+const Home = forwardRef((props, ref) => {
+  const searchBarRef = useRef(null);
   const [aula, setAula] = useState(null); //constantes seteables 7,8,9
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [searchCode, setSearchCode] = useState("");
+
+  // Métodos expuestos a través de ref
+  useImperativeHandle(ref, () => ({
+    resetSearch: () => {
+      setAula(null);
+      setError("");
+      setSearchCode("");
+      if (searchBarRef.current) {
+        searchBarRef.current.clearInput();
+      }
+    },
+    displayAula: (codigo, aulaData) => {
+      setAula(aulaData);
+      setSearchCode(codigo);
+      setError("");
+    },
+  }));
 
   const handleSearch = async (codigoNormalizado) => {
     setLoading(true);
     setError("");
     setAula(null);
+    setSearchCode(codigoNormalizado);
 
     try {
       const result = await getAulaByCode(codigoNormalizado);
@@ -22,6 +43,8 @@ const Home = () => {
         setError("No se encontró el aula");
       } else {
         setAula(result);
+        // Guardar búsqueda en historial
+        addSearchToHistory(codigoNormalizado, result);
       }
     } catch (err) {
       setError("Error al consultar el aula");
@@ -31,11 +54,11 @@ const Home = () => {
   };
 
   const getImageByCode = (codigo) => {
-    const parts = codigo.split('-');
+    const parts = codigo.split("-");
     const lastPart = parts[parts.length - 1];
-    if (['A', 'B', 'C'].includes(lastPart)) {
+    if (["A", "B", "C"].includes(lastPart)) {
       return sanJoaquinImg;
-    } else if (lastPart === 'R') {
+    } else if (lastPart === "R") {
       return raquelImg;
     }
     return null;
@@ -45,7 +68,7 @@ const Home = () => {
     <div className="home-container">
       <h1 className="title">EncuentraTuAula</h1>
 
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar ref={searchBarRef} onSearch={handleSearch} />
 
       {loading && <p className="loading-text">Buscando aula...</p>}
 
@@ -80,6 +103,8 @@ const Home = () => {
       )}
     </div>
   );
-};
+});
+
+Home.displayName = "Home";
 
 export default Home;

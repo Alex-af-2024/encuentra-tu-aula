@@ -1,11 +1,13 @@
-// Formulario dentro de Home.jsx
-
-import { useState } from "react";
+import { useState, forwardRef, useImperativeHandle } from "react";
 import "./SearchBar.css";
 import { normalizeCode } from "../../utils/normalizeCode";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = forwardRef(({ onSearch }, ref) => {
   const [input, setInput] = useState("");
+
+  useImperativeHandle(ref, () => ({
+    clearInput: () => setInput(""),
+  }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +35,8 @@ const SearchBar = ({ onSearch }) => {
       </button>
     </form>
   );
-};
+});
+
+SearchBar.displayName = "SearchBar";
 
 export default SearchBar;
