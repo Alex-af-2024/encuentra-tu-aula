@@ -24,7 +24,7 @@ const SearchBar = forwardRef(({ onSearch }, ref) => {
       <input
         id="search-input"
         type="text"
-        placeholder="Ej: S-02-P03-B"
+        placeholder="Ej:     S-02-P03-B    o    S02P03B"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         className="search-input"

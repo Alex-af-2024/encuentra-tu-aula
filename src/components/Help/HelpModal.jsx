@@ -56,13 +56,13 @@ const HelpModal = ({ onClose }) => {
                   <p>Tipo de espacio</p>
                   <ul>
                     <li>
-                      <strong>S</strong> = Sala/Laboratorio/Taller
+                      <strong>S</strong> = Sala
                     </li>
                     <li>
-                      <strong>A</strong> = Aula de clase
+                      <strong>L</strong> = Laboratorio
                     </li>
                     <li>
-                      <strong>O</strong> = Oficina
+                      <strong>T</strong> = Taller
                     </li>
                   </ul>
                 </div>
@@ -76,7 +76,7 @@ const HelpModal = ({ onClose }) => {
                   <h4>Número (03)</h4>
                   <p>Identificador único del espacio</p>
                   <ul>
-                    <li>Va del 01 al 08</li>
+                    <li>Va del -02 al 08</li>
                     <li>Es único dentro de cada tipo</li>
                   </ul>
                 </div>
@@ -112,16 +112,16 @@ const HelpModal = ({ onClose }) => {
                   <p>En qué edificio se ubica</p>
                   <ul>
                     <li>
-                      <strong>A</strong> = Edificio A
+                      <strong>A</strong> = Edificio A - San Joaquín
                     </li>
                     <li>
-                      <strong>B</strong> = Edificio B
+                      <strong>B</strong> = Edificio B - San Joaquín
                     </li>
                     <li>
-                      <strong>C</strong> = Edificio C
+                      <strong>C</strong> = Edificio C - San Joaquín
                     </li>
                     <li>
-                      <strong>R</strong> = Edificio Raquela Salas
+                      <strong>R</strong> = Salas de Raquel
                     </li>
                   </ul>
                 </div>
@@ -146,13 +146,10 @@ const HelpModal = ({ onClose }) => {
             <p>Al encontrar un aula, verás:</p>
             <ul className="help-tips">
               <li>
-                <strong>Ubicación:</strong> Sede y edificio
+                <strong>Ubicación:</strong> Datos de ubicación de aula
               </li>
               <li>
-                <strong>Sector:</strong> Piso y sección
-              </li>
-              <li>
-                <strong>Imagen:</strong> Foto de la ubicación
+                <strong>Imagen:</strong> Imagen de sede correspondiente
               </li>
               <li>
                 <strong>Guía:</strong> Indicaciones paso a paso
