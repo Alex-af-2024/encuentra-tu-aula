@@ -76,7 +76,7 @@ const HelpModal = ({ onClose }) => {
                   <h4>Número (03)</h4>
                   <p>Identificador único del espacio</p>
                   <ul>
-                    <li>Va del 01 al 99</li>
+                    <li>Va del 01 al 08</li>
                     <li>Es único dentro de cada tipo</li>
                   </ul>
                 </div>
