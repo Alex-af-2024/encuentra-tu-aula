@@ -1,6 +1,6 @@
 # 📍 EncuentraTuAula
 
-> Aplicación web para localizar salas en la Universidad Santo Tomás de manera rápida y sencilla.
+> Aplicación web para localizar salas en la Universidad Santo Tomás de manera rápida y sencilla..
 
 Aplicación web responsive diseñada para facilitar a los estudiantes la ubicación de sus aulas mediante un sistema de códigos estandarizado. Con enfoque **mobile-first** y una interfaz intuitiva, EncuentraTuAula reduce significativamente el tiempo de búsqueda dentro del campus.
 
