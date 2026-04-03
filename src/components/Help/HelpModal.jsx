@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./HelpModal.css";
+import codigoHorarioImg from "../../assets/images/codigo-horario.jpg";
 
 const HelpModal = ({ onClose }) => {
   useEffect(() => {
@@ -28,6 +29,50 @@ const HelpModal = ({ onClose }) => {
         </div>
 
         <div className="modal-body help-body">
+          <div className="help-section">
+            <h3>Cómo buscar</h3>
+            
+            <div className="help-subsection">
+              <h4>Paso 1: Encuentra el código en tu horario</h4>
+              <p>
+                En el horario de Intranet identifica el código de aula:
+              </p>
+              <img 
+                src={codigoHorarioImg} 
+                alt="Ejemplo de código de aula en el horario de Intranet"
+                className="help-image"
+              />
+            </div>
+
+            <div className="help-subsection">
+              <h4>Paso 2: Ingresa el código</h4>
+              <p>
+                Ingresa el código del aula en la barra de búsqueda. Puedes usar:
+              </p>
+              <ul className="help-tips">
+                <li>Letras mayúsculas o minúsculas</li>
+                <li>Incluir o no los guiones (S03P02A o S-03-P02-A)</li>
+                <li>El sistema buscará automáticamente</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="help-section">
+            <h3>Información del aula</h3>
+            <p>Al encontrar un aula, verás:</p>
+            <ul className="help-tips">
+              <li>
+                <strong>Ubicación:</strong> Datos de ubicación de aula
+              </li>
+              <li>
+                <strong>Imagen:</strong> Imagen de sede correspondiente
+              </li>
+              <li>
+                <strong>Guía:</strong> Indicaciones paso a paso
+              </li>
+            </ul>
+          </div>
+
           <div className="help-section">
             <h3>¿Cómo funciona el código del aula?</h3>
             <p>
@@ -127,34 +172,6 @@ const HelpModal = ({ onClose }) => {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="help-section">
-            <h3>Cómo buscar</h3>
-            <p>
-              Ingresa el código del aula en la barra de búsqueda. Puedes usar:
-            </p>
-            <ul className="help-tips">
-              <li>Letras mayúsculas o minúsculas</li>
-              <li>Incluir o no los guiones (S03P02A o S-03-P02-A)</li>
-              <li>El sistema buscará automáticamente</li>
-            </ul>
-          </div>
-
-          <div className="help-section">
-            <h3>Información del aula</h3>
-            <p>Al encontrar un aula, verás:</p>
-            <ul className="help-tips">
-              <li>
-                <strong>Ubicación:</strong> Datos de ubicación de aula
-              </li>
-              <li>
-                <strong>Imagen:</strong> Imagen de sede correspondiente
-              </li>
-              <li>
-                <strong>Guía:</strong> Indicaciones paso a paso
-              </li>
-            </ul>
           </div>
         </div>
       </div>

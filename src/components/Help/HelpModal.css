@@ -161,6 +161,37 @@
   margin-bottom: 6px;
 }
 
+.help-subsection {
+  margin-bottom: 20px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #007d6d;
+}
+
+.help-subsection h4 {
+  color: #003f37;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.help-subsection p {
+  margin: 0 0 12px 0;
+  color: #555;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.help-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 12px 0;
+}
+
 /* Tablets */
 @media (max-width: 768px) {
   .help-body {
