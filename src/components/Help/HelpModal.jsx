@@ -4,20 +4,20 @@ import codigoHorarioImg from "../../assets/images/codigo-horario.jpg";
 
 const HelpModal = ({ onClose }) => {
   useEffect(() => {
-    // Bloquear scroll del body cuando el modal está abierto
+    // Bloquear/Desbloquear scroll del body cuando el modal está abierto/cerrado
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "auto";
     };
   }, []);
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div
+    <div className="modal-overlay" onClick={onClose}> {/* Cerrar modal al hacer clic fuera del contenido */ }
+      <div 
         className="modal-content help-modal"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()} 
       >
         <div className="modal-header">
-          <h2>Guía de códigos</h2>
+          <h2>Ayuda</h2>
           <button
             className="modal-close"
             onClick={onClose}
@@ -30,7 +30,7 @@ const HelpModal = ({ onClose }) => {
 
         <div className="modal-body help-body">
           <div className="help-section">
-            <h3>Cómo buscar</h3>
+            <h2>🕵️‍♂️ Cómo buscar</h2>
             
             <div className="help-subsection">
               <h4>Paso 1: Encuentra el código en tu horario</h4>
@@ -45,7 +45,7 @@ const HelpModal = ({ onClose }) => {
             </div>
 
             <div className="help-subsection">
-              <h4>Paso 2: Ingresa el código</h4>
+              <h4>Paso 2: Ingresa el código en la barra de búsqueda</h4>
               <p>
                 Ingresa el código del aula en la barra de búsqueda. Puedes usar:
               </p>
@@ -57,8 +57,8 @@ const HelpModal = ({ onClose }) => {
             </div>
           </div>
 
-          <div className="help-section">
-            <h3>Información del aula</h3>
+          <div className="help-subsection">
+            <h4>Paso 3: Sigue la guía </h4>
             <p>Al encontrar un aula, verás:</p>
             <ul className="help-tips">
               <li>
@@ -68,13 +68,13 @@ const HelpModal = ({ onClose }) => {
                 <strong>Imagen:</strong> Imagen de sede correspondiente
               </li>
               <li>
-                <strong>Guía:</strong> Indicaciones paso a paso
+                <strong>Guía:</strong> Indicaciones paso a paso hasta llegar a tu aula.
               </li>
             </ul>
           </div>
 
           <div className="help-section">
-            <h3>¿Cómo funciona el código del aula?</h3>
+            <h2>👁️‍🗨️ ¿Quieres conocer el código del aula?</h2>
             <p>
               Cada aula tiene un código único que te ayuda a identificarla. Te
               mostramos cómo interpretarlo:
