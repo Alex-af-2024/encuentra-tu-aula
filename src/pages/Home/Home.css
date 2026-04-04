@@ -37,6 +37,8 @@ p{
   text-align: left;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 63, 55, 0.1);
+  /* Animación fade + scale */
+  animation: fadeInScale 0.4s ease-out;
 }
 
 .aula-title {
@@ -55,6 +57,7 @@ p{
 .guide-text {
   margin-top: 15px;
   line-height: 1.5;
+  text-align: justify;
 }
 
 /* Tablets */
@@ -117,5 +120,17 @@ p{
 
   p {
     font-size: 14px;
+  }
+}
+
+/* Animación fade + scale para el resultado */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }

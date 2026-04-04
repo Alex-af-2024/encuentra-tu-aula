@@ -75,7 +75,7 @@ const Home = forwardRef((props, ref) => {
       {error && <p className="error-text">{error}</p>}
 
       {aula && (
-        <div className="result-box">
+        <div className="result-box" key={aula.codigo}>
           <h2 className="aula-title">{aula.codigo}</h2>
 
           <p>

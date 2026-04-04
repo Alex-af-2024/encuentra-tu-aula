@@ -71,7 +71,6 @@ const HelpModal = ({ onClose }) => {
               <li>
                 <strong>Guía:</strong> Indicaciones paso a paso hasta llegar a tu aula.
               </li>
-              <li></li>
             </ul>
           </div>
 
@@ -134,7 +133,7 @@ const HelpModal = ({ onClose }) => {
                   <span>3</span>
                 </div>
                 <div className="help-content">
-                  <h4>Piso (P + número)</h4>
+                  <h4>Piso/Sótano (P/S + número)</h4>
                   <p>En qué piso se encuentra</p>
                   <ul>
                     <li>
@@ -145,6 +144,15 @@ const HelpModal = ({ onClose }) => {
                     </li>
                     <li>
                       <strong>P03</strong> = Piso 3
+                    </li>
+                    <li>
+                      <strong>P04</strong> = Piso 4
+                    </li>
+                    <li>
+                      <strong>S01</strong> = Sotano 01
+                    </li>
+                    <li>
+                      <strong>S02</strong> = Sotano 02
                     </li>
                   </ul>
                 </div>
