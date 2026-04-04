@@ -35,24 +35,25 @@ const HelpModal = ({ onClose }) => {
             <div className="help-subsection">
               <h4>Paso 1: Encuentra el código en tu horario</h4>
               <p>
-                En el horario de Intranet identifica el código de aula:
+                En el horario de <strong>Intranet</strong> identifica el código de aula
               </p>
               <img 
                 src={codigoHorarioImg} 
                 alt="Ejemplo de código de aula en el horario de Intranet"
                 className="help-image"
               />
+              <p>👁️ Los rectángulos rojos indican el código de la aula.  Se repiten en cada hora.</p>
             </div>
 
             <div className="help-subsection">
               <h4>Paso 2: Ingresa el código en la barra de búsqueda</h4>
               <p>
-                Ingresa el código del aula en la barra de búsqueda. Puedes usar:
+                En <strong>encuentraTuAula</strong> ingresa el código del aula en la barra de búsqueda. Puedes usar:
               </p>
               <ul className="help-tips">
                 <li>Letras mayúsculas o minúsculas</li>
                 <li>Incluir o no los guiones (S03P02A o S-03-P02-A)</li>
-                <li>El sistema buscará automáticamente</li>
+                <li>Presiona bóton Buscar o enter en PC</li>
               </ul>
             </div>
           </div>
@@ -70,6 +71,7 @@ const HelpModal = ({ onClose }) => {
               <li>
                 <strong>Guía:</strong> Indicaciones paso a paso hasta llegar a tu aula.
               </li>
+              <li></li>
             </ul>
           </div>
 
