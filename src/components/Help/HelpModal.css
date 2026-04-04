@@ -188,6 +188,22 @@
   flex-shrink: 0;
 }
 
+.help-icon-letter {
+  background-color: #007d6d;
+}
+
+.help-icon-number {
+  background-color: #00a896;
+}
+
+.help-icon-floor {
+  background-color: #3ba236;
+}
+
+.help-icon-building {
+  background-color: #ff9800;
+}
+
 .help-content h4 {
   margin: 0 0 6px 0;
   color: #003f37;

@@ -94,7 +94,7 @@ const HelpModal = ({ onClose }) => {
 
             <div className="help-items">
               <div className="help-item">
-                <div className="help-icon">
+                <div className="help-icon help-icon-letter">
                   <span>1</span>
                 </div>
                 <div className="help-content">
@@ -115,7 +115,7 @@ const HelpModal = ({ onClose }) => {
               </div>
 
               <div className="help-item">
-                <div className="help-icon">
+                <div className="help-icon help-icon-number">
                   <span>2</span>
                 </div>
                 <div className="help-content">
@@ -129,7 +129,7 @@ const HelpModal = ({ onClose }) => {
               </div>
 
               <div className="help-item">
-                <div className="help-icon">
+                <div className="help-icon help-icon-floor">
                   <span>3</span>
                 </div>
                 <div className="help-content">
@@ -159,7 +159,7 @@ const HelpModal = ({ onClose }) => {
               </div>
 
               <div className="help-item">
-                <div className="help-icon">
+                <div className="help-icon help-icon-building">
                   <span>4</span>
                 </div>
                 <div className="help-content">
