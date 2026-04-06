@@ -6,11 +6,10 @@ const AulaResult = ({ aula }) => {
     if (!aula) return null;
 
     const getImageByCode = (codigo) => {
-        const parts = codigo.split('-');
-        const lastPart = parts[parts.length - 1];
-        if (['A', 'B', 'C'].includes(lastPart)) {
+        const lastChar = codigo[codigo.length - 1];
+        if (['A', 'B', 'C'].includes(lastChar)) {
             return sanJoaquinImg;
-        } else if (lastPart === 'R') {
+        } else if (lastChar === 'R') {
             return raquelImg;
         }
         return null;
