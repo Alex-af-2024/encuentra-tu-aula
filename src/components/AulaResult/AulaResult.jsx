@@ -5,6 +5,12 @@ import raquelImg from '../../assets/images/raquel.jpg';
 const AulaResult = ({ aula }) => {
     if (!aula) return null;
 
+    const sedeImages = {
+        "san joaquín": sanJoaquinImg,
+        "san joaquin": sanJoaquinImg,
+        "raquel": raquelImg,
+    };
+
     const getImageByCode = (codigo) => {
         const lastChar = codigo[codigo.length - 1];
         if (['A', 'B', 'C'].includes(lastChar)) {
@@ -15,6 +21,14 @@ const AulaResult = ({ aula }) => {
         return null;
     };
 
+    const getImageBySede = (sede) => {
+        if (!sede) return null;
+        const key = sede.trim().toLowerCase();
+        return sedeImages[key] || null;
+    };
+
+    const image = getImageBySede(aula.sede) || getImageByCode(aula.codigo);
+
      return (
     <div className="result-container">
       <h2>{aula.codigo}</h2>
@@ -23,10 +37,10 @@ const AulaResult = ({ aula }) => {
       <p><strong>Edificio:</strong> {aula.edificio}</p>
       <p><strong>Piso:</strong> {aula.piso}</p>
 
-      {getImageByCode(aula.codigo) && (
+      {image && (
         <img
-          src={getImageByCode(aula.codigo)}
-          alt="Imagen del aula"
+          src={image}
+          alt={`Imagen de la sede ${aula.sede}`}
           className="result-image"
         />
       )}
