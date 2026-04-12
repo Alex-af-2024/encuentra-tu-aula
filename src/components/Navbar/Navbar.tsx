@@ -2,6 +2,7 @@ import { useState } from "react";
 import HistoryModal from "../History/HistoryModal";
 import HelpModal from "../Help/HelpModal";
 import { Aula } from "../../types";
+import { AnimatePresence } from "framer-motion";
 
 interface NavbarProps {
   onNavigateHome: () => void;
@@ -75,14 +76,18 @@ const Navbar = ({ onNavigateHome, onSelectFromHistory, onResetInput }: NavbarPro
         </div>
       </div>
 
-      {showHistory && (
-        <HistoryModal
-          onClose={() => setShowHistory(false)}
-          onSelectSearch={onSelectFromHistory}
-        />
-      )}
+      <AnimatePresence>
+        {showHistory && (
+          <HistoryModal
+            onClose={() => setShowHistory(false)}
+            onSelectSearch={onSelectFromHistory}
+          />
+        )}
+      </AnimatePresence>
 
-      {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
+      <AnimatePresence>
+        {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
+      </AnimatePresence>
     </>
   );
 };

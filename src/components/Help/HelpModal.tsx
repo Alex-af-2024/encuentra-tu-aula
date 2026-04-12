@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import codigoHorarioImg from "../../assets/images/codigo-horario.jpg";
+import { motion } from "framer-motion";
 
 interface HelpModalProps {
   onClose: () => void;
@@ -14,13 +15,21 @@ const HelpModal = ({ onClose }: HelpModalProps) => {
   }, []);
 
   return (
-    <div 
-      className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in" 
+    <motion.div 
+      className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4" 
       onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
     >
-      <div 
+      <motion.div 
         className="glass-card flex flex-col w-full max-w-lg max-h-[90vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()} 
+        initial={{ opacity: 0, scale: 0.95, y: 15 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: -15 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
       >
         <div className="flex justify-between items-center p-6 border-b border-slate-100 bg-white/50 sticky top-0 z-10 w-full">
           <h2 className="text-xl font-bold text-slate-800">Ayuda</h2>
@@ -163,8 +172,8 @@ const HelpModal = ({ onClose }: HelpModalProps) => {
             </div>
           </section>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

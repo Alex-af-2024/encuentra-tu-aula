@@ -4,6 +4,7 @@ import AulaResult from "../../components/AulaResult/AulaResult";
 import { getAulaByCode } from "../../services/aulaService";
 import { addSearchToHistory } from "../../utils/storageUtils";
 import { Aula } from "../../types";
+import { motion, AnimatePresence } from "framer-motion";
 
 export interface HomeHandle {
   resetSearch: () => void;
@@ -66,21 +67,47 @@ const Home = forwardRef<HomeHandle>((_props, ref) => {
 
       <SearchBar ref={searchBarRef} onSearch={handleSearch} />
 
-      <div className="w-full mt-8 animate-fade-in transition-all">
-        {loading && (
-          <div className="flex justify-center items-center py-10">
-            <div className="w-10 h-10 border-4 border-teal-200 border-t-accent rounded-full animate-spin"></div>
-          </div>
-        )}
+      <div className="w-full mt-8">
+        <AnimatePresence mode="wait">
+          {loading && (
+            <motion.div 
+              key="loading"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              className="flex justify-center items-center py-10"
+            >
+              <div className="w-10 h-10 border-4 border-teal-200 border-t-accent rounded-full animate-spin"></div>
+            </motion.div>
+          )}
 
-        {error && (
-          <div className="glass-card bg-red-50/80 border-red-200 p-6 text-center text-red-600 font-medium">
-            <span className="block text-3xl mb-2">😕</span>
-            <p>{error}</p>
-          </div>
-        )}
+          {error && !loading && (
+            <motion.div 
+              key="error"
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="glass-card bg-red-50/80 border-red-200 p-6 text-center text-red-600 font-medium"
+            >
+              <span className="block text-3xl mb-2">😕</span>
+              <p>{error}</p>
+            </motion.div>
+          )}
 
-        {aula && !loading && !error && <AulaResult aula={aula} />}
+          {aula && !loading && !error && (
+            <motion.div 
+              key="aula-result"
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -15 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            >
+              <AulaResult aula={aula} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ const AulaResult = ({ aula }: AulaResultProps) => {
     const image = getImageBySede(aula.sede) || getImageByCode(aula.codigo);
 
     return (
-    <div className="glass-card flex flex-col p-6 overflow-hidden animate-fade-in divide-y divide-slate-100">
+    <div className="glass-card flex flex-col p-6 overflow-hidden divide-y divide-slate-100">
       <div className="pb-4 mb-2 flex flex-col items-center">
         <span className="text-xs tracking-wider text-accent font-bold uppercase mb-1 drop-shadow-sm">AULA ENCONTRADA</span>
         <h2 className="text-4xl font-bold text-slate-800 tracking-tight">{aula.codigo}</h2>
