@@ -1,4 +1,4 @@
-export const normalizeCode = (code) => {
+export const normalizeCode = (code: string): string => {
   if (!code) return "";
 
   // Transforma input a UpperCase, reemplaza espacios vacios y guiones en "". No se necesita trim()
