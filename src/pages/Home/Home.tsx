@@ -58,14 +58,27 @@ const Home = forwardRef<HomeHandle>((_props, ref) => {
 
   return (
     <div className="flex flex-col items-center w-full h-full pb-8">
-      <div className="w-full text-center mt-8 mb-10">
-        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-500 drop-shadow-sm tracking-tight mb-2">
-          EncuentraTuAula
-        </h1>
-        <p className="text-slate-500 font-medium tracking-wide">BUSCADOR DE AULAS</p>
-      </div>
+      <AnimatePresence mode="wait">
+        {!aula && (
+          <motion.div
+            key="search-container"
+            initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
+            animate={{ opacity: 1, height: 'auto', overflow: 'visible' }}
+            exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="w-full flex flex-col items-center"
+          >
+            <div className="w-full text-center mt-8 mb-10">
+              <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-500 drop-shadow-sm tracking-tight mb-2">
+                EncuentraTuAula
+              </h1>
+              <p className="text-slate-500 font-medium tracking-wide">BUSCADOR DE AULAS</p>
+            </div>
 
-      <SearchBar ref={searchBarRef} onSearch={handleSearch} />
+            <SearchBar ref={searchBarRef} onSearch={handleSearch} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="w-full mt-8">
         <AnimatePresence mode="wait">
