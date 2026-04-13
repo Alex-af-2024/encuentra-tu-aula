@@ -9,34 +9,59 @@ export interface SearchBarHandle {
   clearInput: () => void;
 }
 
+const box1Options = ["S", "L", "T"];
+const box2Options = ["00", "01", "02", "03", "04", "05", "06", "07", "08"];
+const box3Options = ["P01", "P02", "P03", "P04", "S01", "S02"];
+const box4Options = ["A", "B", "C", "R"];
+
 const SearchBar = forwardRef<SearchBarHandle, SearchBarProps>(({ onSearch }, ref) => {
-  const [input, setInput] = useState("");
+  const [b1, setB1] = useState(box1Options[0]);
+  const [b2, setB2] = useState(box2Options[0]);
+  const [b3, setB3] = useState(box3Options[0]);
+  const [b4, setB4] = useState(box4Options[0]);
 
   useImperativeHandle(ref, () => ({
-    clearInput: () => setInput(""),
+    clearInput: () => {
+      setB1(box1Options[0]);
+      setB2(box2Options[0]);
+      setB3(box3Options[0]);
+      setB4(box4Options[0]);
+    },
   }));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const normalized = normalizeCode(input);
+    const joined = `${b1}-${b2}-${b3}-${b4}`;
+    const normalized = normalizeCode(joined);
     if (!normalized) return;
     onSearch(normalized);
   };
 
+  const selectClasses = "bg-slate-200 text-slate-800 text-center text-sm sm:text-lg py-2 px-1 rounded-md sm:rounded-lg focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer flex-1 disabled:opacity-50 appearance-none font-medium shadow-inner";
+
   return (
-    <form className="w-full relative glass-card p-1.5 sm:p-2 group focus-within:ring-2 focus-within:ring-accent transition-all shadow-md" onSubmit={handleSubmit}>
-      <input
-        id="search-input"
-        type="text"
-        placeholder="Ej: S-02-P03-B / S02P03B"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        className="w-full bg-transparent border-none text-slate-800 text-sm sm:text-lg pl-3 sm:pl-4 pr-20 sm:pr-28 py-3 placeholder:text-slate-400 focus:outline-none"
-      />
+    <form className="w-full relative glass-card p-2 sm:p-3 group focus-within:ring-2 focus-within:ring-accent transition-all shadow-md flex items-center" onSubmit={handleSubmit}>
+      <div className="flex w-full items-center justify-between gap-1 sm:gap-2 pr-20 sm:pr-28">
+        <select value={b1} onChange={e => setB1(e.target.value)} className={selectClasses} title="Tipo">
+          {box1Options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+        </select>
+        <span className="text-slate-400 font-bold">-</span>
+        <select value={b2} onChange={e => setB2(e.target.value)} className={selectClasses} title="Número">
+          {box2Options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+        </select>
+        <span className="text-slate-400 font-bold">-</span>
+        <select value={b3} onChange={e => setB3(e.target.value)} className={selectClasses} title="Pabellón/Sector">
+          {box3Options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+        </select>
+        <span className="text-slate-400 font-bold">-</span>
+        <select value={b4} onChange={e => setB4(e.target.value)} className={selectClasses} title="Letra">
+          {box4Options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+        </select>
+      </div>
 
       <button
         type="submit"
-        className="absolute right-1.5 sm:right-2 top-1.5 sm:top-2 bottom-1.5 sm:bottom-2 bg-accent hover:bg-teal-700 text-white font-medium text-sm sm:text-base px-4 sm:px-6 rounded-2xl transition-all shadow-md active:scale-95 flex items-center justify-center"
+        className="absolute right-1.5 sm:right-2 top-1.5 sm:top-2 bottom-1.5 sm:bottom-2 bg-accent hover:bg-teal-700 text-white font-medium text-sm sm:text-base px-3 sm:px-6 rounded-xl sm:rounded-2xl transition-all shadow-md active:scale-95 flex items-center justify-center z-10"
       >
         Buscar
       </button>
