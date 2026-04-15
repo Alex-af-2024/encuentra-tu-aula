@@ -7,6 +7,10 @@
 }
 
 @layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
     background-color: var(--color-slate-50, #f8fafc);
     color: var(--color-slate-800, #1e293b);
