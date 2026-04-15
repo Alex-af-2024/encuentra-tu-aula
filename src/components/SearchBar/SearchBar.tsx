@@ -1,4 +1,4 @@
-import { useState, forwardRef, useImperativeHandle } from "react";
+import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { normalizeCode } from "../../utils/normalizeCode";
 
 interface SearchBarProps {
@@ -16,9 +16,14 @@ const box4Options = ["A", "B", "C", "R"];
 
 const SearchBar = forwardRef<SearchBarHandle, SearchBarProps>(({ onSearch }, ref) => {
   const [b1, setB1] = useState(box1Options[0]);
-  const [b2, setB2] = useState(box2Options[0]);
-  const [b3, setB3] = useState(box3Options[0]);
-  const [b4, setB4] = useState(box4Options[0]);
+  const [b2, setB2] = useState(box2Options[1]);
+  const [b3, setB3] = useState(box3Options[1]);
+  const [b4, setB4] = useState(box4Options[1]);
+
+  const select2Ref = useRef<HTMLSelectElement>(null);
+  const select3Ref = useRef<HTMLSelectElement>(null);
+  const select4Ref = useRef<HTMLSelectElement>(null);
+  const submitRef = useRef<HTMLButtonElement>(null);
 
   useImperativeHandle(ref, () => ({
     clearInput: () => {
@@ -42,24 +47,25 @@ const SearchBar = forwardRef<SearchBarHandle, SearchBarProps>(({ onSearch }, ref
   return (
     <form className="w-full relative glass-card p-2 sm:p-3 group focus-within:ring-2 focus-within:ring-accent transition-all shadow-md flex items-center" onSubmit={handleSubmit}>
       <div className="flex w-full items-center justify-between gap-1 sm:gap-2 pr-20 sm:pr-28">
-        <select value={b1} onChange={e => setB1(e.target.value)} className={selectClasses} title="Tipo">
+        <select value={b1} onChange={e => { setB1(e.target.value); select2Ref.current?.focus(); }} className={selectClasses} title="Tipo">
           {box1Options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
         </select>
         <span className="text-slate-400 font-bold">-</span>
-        <select value={b2} onChange={e => setB2(e.target.value)} className={selectClasses} title="Número">
+        <select ref={select2Ref} value={b2} onChange={e => { setB2(e.target.value); select3Ref.current?.focus(); }} className={selectClasses} title="Número">
           {box2Options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
         </select>
         <span className="text-slate-400 font-bold">-</span>
-        <select value={b3} onChange={e => setB3(e.target.value)} className={selectClasses} title="Pabellón/Sector">
+        <select ref={select3Ref} value={b3} onChange={e => { setB3(e.target.value); select4Ref.current?.focus(); }} className={selectClasses} title="Pabellón/Sector">
           {box3Options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
         </select>
         <span className="text-slate-400 font-bold">-</span>
-        <select value={b4} onChange={e => setB4(e.target.value)} className={selectClasses} title="Letra">
+        <select ref={select4Ref} value={b4} onChange={e => { setB4(e.target.value); submitRef.current?.focus(); }} className={selectClasses} title="Letra">
           {box4Options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
         </select>
       </div>
 
       <button
+        ref={submitRef}
         type="submit"
         className="absolute right-1.5 sm:right-2 top-1.5 sm:top-2 bottom-1.5 sm:bottom-2 bg-accent hover:bg-teal-700 text-white font-medium text-sm sm:text-base px-3 sm:px-6 rounded-xl sm:rounded-2xl transition-all shadow-md active:scale-95 flex items-center justify-center z-10"
       >
@@ -72,3 +78,4 @@ const SearchBar = forwardRef<SearchBarHandle, SearchBarProps>(({ onSearch }, ref
 SearchBar.displayName = "SearchBar";
 
 export default SearchBar;
+
